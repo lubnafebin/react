@@ -19,6 +19,7 @@ header > h1{
 }
 article .journal{
     display: flex;
+    margin-bottom: 30px;
 }
 article .journal .marker{
     width: 7px;

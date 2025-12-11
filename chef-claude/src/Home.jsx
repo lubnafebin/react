@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 export const Home = () => {
-  const ingredients = ["ddd", "ddd", "rrr"];
+  const [ingredients,setIngredients] = useState([])
   const list = ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));

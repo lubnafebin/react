@@ -23,16 +23,18 @@ export const Home = () => {
         <button>+ Add Ingredient</button>
       </form>
       {ingredients.length > 0 && (
-        <section> 
+        <section>
           <h2>Ingredients on Hand:</h2>
           <ul className="list-items">{list}</ul>
-          <div className="recipe-container">
-            <div>
-              <h3>Ready for recipe?</h3>
-              <p>Generate a recipe from your list of ingredients.</p>
+          {ingredients.length > 3 && (
+            <div className="recipe-container">
+              <div>
+                <h3>Ready for recipe?</h3>
+                <p>Generate a recipe from your list of ingredients.</p>
+              </div>
+              <button>Get a recipe</button>
             </div>
-            <button>Get a recipe</button>
-          </div>
+          )}
         </section>
       )}
     </main>

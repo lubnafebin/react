@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ClaudeRecipe } from "./components/ClaudeRecipe";
+import { IngredientsList } from "./components/IngredientsList";
 
 export const Home = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -6,9 +8,6 @@ export const Home = () => {
   function toggleRecipeShown() {
     setRecipeShow((prevShown) => !prevShown);
   }
-  const list = ingredients.map((ingredient, index) => (
-    <li key={index}>{ingredient}</li>
-  ));
 
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
@@ -26,41 +25,12 @@ export const Home = () => {
         <button>+ Add Ingredient</button>
       </form>
       {ingredients.length > 0 && (
-        <section>
-          <h2>Ingredients on Hand:</h2>
-          <ul className="list-items">{list}</ul>
-          {ingredients.length > 3 && (
-            <div className="recipe-container">
-              <div>
-                <h3>Ready for recipe?</h3>
-                <p>Generate a recipe from your list of ingredients.</p>
-              </div>
-              <button onClick={toggleRecipeShown}>Get a recipe</button>
-            </div>
-          )}
-        </section>
+        <IngredientsList
+          ingredients={ingredients}
+          toggleRecipeShown={toggleRecipeShown}
+        />
       )}
-      {recipeShow && (
-        <section>
-          <h2>Chef claude recommends:</h2>
-          <article>
-            <p></p>
-            <h3></h3>
-            <strong>Ingredients</strong>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-            <strong>Instructions</strong>
-            <ol>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ol>
-          </article>
-        </section>
-      )}
+      {recipeShow && <ClaudeRecipe />}
     </main>
   );
 };

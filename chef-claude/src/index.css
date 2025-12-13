@@ -51,3 +51,7 @@ main{
   color: white;
   font-size: 14px;
 }
+.recipe-container>button{
+  background: orange;
+  color: white;
+}

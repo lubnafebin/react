@@ -24,13 +24,15 @@ export const Home = () => {
         />
         <button>+ Add Ingredient</button>
       </form>
-      {ingredients.length > 0 && (
-        <IngredientsList
-          ingredients={ingredients}
-          toggleRecipeShown={toggleRecipeShown}
-        />
-      )}
-      {recipeShow && <ClaudeRecipe />}
+      <div className="main-container">
+        {ingredients.length > 0 && (
+          <IngredientsList
+            ingredients={ingredients}
+            toggleRecipeShown={toggleRecipeShown}
+          />
+        )}
+        {recipeShow && <ClaudeRecipe />}
+      </div>
     </main>
   );
 };

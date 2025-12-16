@@ -50,6 +50,7 @@ main{
   background: black;
   color: white;
   font-size: 14px;
+  cursor: pointer;
 }
 .main-container{
   padding: 10px;
@@ -71,4 +72,11 @@ main{
   border: none;
   padding: 5px;
   border-radius: 5px;
+  cursor: pointer;
+}
+.suggested-recipe-container{
+  line-height: 28px;
+  font-weight: 400;
+  font-size: 1.125rem;
+  color: #475467;
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ClaudeRecipe } from "./components/ClaudeRecipe";
-import { IngredientsList } from "./components/IngredientsList";
-import { getRecipeFromMistral } from "./ai";
+import { ClaudeRecipe } from "./ClaudeRecipe";
+import { IngredientsList } from "./IngredientsList";
+import { getRecipeFromMistral } from "../ai";
 
 export const Home = () => {
   const [ingredients, setIngredients] = useState([]);

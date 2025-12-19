@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export const AssemblyEndgame = () => {
-
   const words = [
     "chair",
     "hat",
@@ -15,14 +14,13 @@ export const AssemblyEndgame = () => {
     "honey",
   ];
 
-    function getRandomWord() {
+  function getRandomWord() {
     const randomIndex = Math.floor(Math.random() * words.length);
     return words[randomIndex];
   }
 
   const [currentWord, setCurrentWord] = useState(() => getRandomWord());
   const [guessedLetter, setGuessedLetter] = useState([]);
-
 
   const languages = [
     {
@@ -73,6 +71,11 @@ export const AssemblyEndgame = () => {
   ];
 
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+  function startGame() {
+    setCurrentWord(getRandomWord());
+    setGuessedLetter([]);
+  }
 
   //check for wrong guessed count
   const wrongGuessCount = guessedLetter.filter(
@@ -164,7 +167,11 @@ export const AssemblyEndgame = () => {
       <section className="lang-chips">{langElement}</section>
       <section className="word">{letterElement}</section>
       <section className="keyboard">{keyboardElement}</section>
-      {isGameOver && <button className="start-button">New Game</button>}
+      {isGameOver && (
+        <button onClick={startGame} className="start-button">
+          New Game
+        </button>
+      )}
     </main>
   );
 };

@@ -4,14 +4,6 @@ export const AssemblyEndgame = () => {
   const [currentWord, setCurrentWord] = useState("react");
   const [guessedLetter, setGuessedLetter] = useState([]);
 
-  const alphabets = "abcdefghijklmnopqrstuvwxyz";
-
-  function addGuessedLetter(letter) {
-    setGuessedLetter((prevLetter) =>
-      prevLetter.includes(letter) ? prevLetter : [...prevLetter, letter]
-    );
-  }
-
   const languages = [
     {
       name: "HTML",
@@ -35,7 +27,7 @@ export const AssemblyEndgame = () => {
     },
     {
       name: "TypeScript",
-      backgroundColor: "#E2680F",
+      backgroundColor: "#0396c2ff",
       color: "#F9F4DA",
     },
     {
@@ -53,26 +45,62 @@ export const AssemblyEndgame = () => {
       backgroundColor: "#e22f0fff",
       color: "#F9F4DA",
     },
+    {
+      name: "Assembly",
+      backgroundColor: "#140ca5ff",
+      color: "#F9F4DA",
+    },
   ];
+  
+  const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
-  const langElement = languages.map((lang) => {
+  //check for wrong guessed count
+  const wrongGuessCount = guessedLetter.filter(
+    (letter) => !currentWord.includes(letter)
+  ).length;
+
+  //return true if game won using every
+  const isGameWon = currentWord
+    .split("")
+    .every((letter) => guessedLetter.includes(letter));
+
+  //check for game lost
+  const isGameLost = wrongGuessCount >= languages.length - 1;
+
+  const isGameOver = isGameWon || isGameLost;
+  //add the guessed letter to the array
+  function addGuessedLetter(letter) {
+    setGuessedLetter((prevLetter) =>
+      prevLetter.includes(letter) ? prevLetter : [...prevLetter, letter]
+    );
+  }
+
+  //return language chips
+  const langElement = languages.map((lang, index) => {
+    const isLangLost = index < wrongGuessCount;
     const styles = {
       backgroundColor: lang.backgroundColor,
       color: lang.color,
     };
     return (
-      <span className="chip" style={styles} key={lang.name}>
+      <span
+        className={`chip ${isLangLost ? "lost" : ""}`}
+        style={styles}
+        key={lang.name}
+      >
         {lang.name}
       </span>
     );
   });
 
+  //display guessed letter if it is correct
   const letterElement = currentWord.split("").map((letter, index) => (
     <span key={index} className="letter">
       {guessedLetter.includes(letter) ? letter.toUpperCase() : ""}
     </span>
   ));
 
+  // return keyboard element with the correct styles based on guesses
   const keyboardElement = alphabets.split("").map((letter) => {
     const isGuessed = guessedLetter.includes(letter);
     const isCorrect = isGuessed && currentWord.includes(letter);
@@ -104,7 +132,7 @@ export const AssemblyEndgame = () => {
       <section className="lang-chips">{langElement}</section>
       <section className="word">{letterElement}</section>
       <section className="keyboard">{keyboardElement}</section>
-      <button className="start-button">New Game</button>
+      {isGameOver && <button className="start-button">New Game</button>}
     </main>
   );
 };

@@ -86,6 +86,7 @@ export const AssemblyEndgame = () => {
       <section className="lang-chips">{langElement}</section>
       <section className="word">{letterElement}</section>
       <section className="keyboard">{keyboardElement}</section>
+      <button className="start-button">New Game</button>
     </main>
   );
 };

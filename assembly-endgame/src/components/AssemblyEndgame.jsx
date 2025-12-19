@@ -117,11 +117,19 @@ export const AssemblyEndgame = () => {
   });
 
   //display guessed letter if it is correct
-  const letterElement = currentWord.split("").map((letter, index) => (
-    <span key={index} className="letter">
-      {guessedLetter.includes(letter) ? letter.toUpperCase() : ""}
-    </span>
-  ));
+  const letterElement = currentWord.split("").map((letter, index) => {
+    const revealLetter = isGameLost || guessedLetter.includes(letter);
+    return (
+      <span
+        key={index}
+        className={
+          isGameLost && !guessedLetter.includes(letter) && "missed-letter"
+        }
+      >
+        {revealLetter ? letter.toUpperCase() : ""}
+      </span>
+    );
+  });
 
   // return keyboard element with the correct styles based on guesses
   const keyboardElement = alphabets.split("").map((letter) => {

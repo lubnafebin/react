@@ -51,7 +51,7 @@ export const AssemblyEndgame = () => {
       color: "#F9F4DA",
     },
   ];
-  
+
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
   //check for wrong guessed count
@@ -125,9 +125,20 @@ export const AssemblyEndgame = () => {
           from Assembly!
         </p>
       </header>
-      <section className="game-status">
-        <h2>You Win🎉</h2>
-        <p>Good Job🎉</p>
+      <section className={`game-status ${isGameWon ? "won" : "lost"} `}>
+        {isGameOver ? (
+          isGameWon ? (
+            <>
+              <h2>You Win🎉</h2>
+              <p>Good Job🎉</p>
+            </>
+          ) : (
+            <>
+              <h2>Game Over!!</h2>
+              <p>You lose! Better start learning Assembly!</p>
+            </>
+          )
+        ) : null}
       </section>
       <section className="lang-chips">{langElement}</section>
       <section className="word">{letterElement}</section>

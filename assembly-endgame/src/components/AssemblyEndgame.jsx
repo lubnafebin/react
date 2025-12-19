@@ -2,8 +2,15 @@ import { useState } from "react";
 
 export const AssemblyEndgame = () => {
   const [currentWord, setCurrentWord] = useState("react");
+  const [guessedLetter, setGuessedLetter] = useState([]);
 
   const alphabets = "abcdefghijklmnopqrstuvwxyz";
+
+  function addGuessedLetter(letter) {
+    setGuessedLetter((prevLetter) =>
+      prevLetter.includes(letter) ? prevLetter : [...prevLetter, letter]
+    );
+  }
 
   const languages = [
     {
@@ -66,9 +73,20 @@ export const AssemblyEndgame = () => {
     </span>
   ));
 
-  const keyboardElement = alphabets
-    .split("")
-    .map((letter) => <button key={letter}>{letter.toUpperCase()}</button>);
+  const keyboardElement = alphabets.split("").map((letter) => {
+    const isGuessed = guessedLetter.includes(letter);
+    const isCorrect = isGuessed && currentWord.includes(letter);
+    const isWrong = isGuessed && !currentWord.includes(letter);
+    return (
+      <button
+        className={isCorrect ? "correct" : isWrong ? "wrong" : ""}
+        onClick={() => addGuessedLetter(letter)}
+        key={letter}
+      >
+        {letter.toUpperCase()}
+      </button>
+    );
+  });
 
   return (
     <main>

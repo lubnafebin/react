@@ -52,6 +52,7 @@ section.lang-chips{
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
+  align-items: center;
   max-width: 400px;
   margin-bottom: 30px;
 }
@@ -82,9 +83,11 @@ section.word>span{
 section.keyboard{
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
   justify-content: center;
   max-width: 450px;
+  margin-bottom: 20px;
 }
 section.keyboard >button{
   height: 30px;
@@ -92,9 +95,19 @@ section.keyboard >button{
   background-color: #d09809;
   border: 1px solid #D9D9D9;
   border-radius: 3px;
+  cursor: pointer;
 }
 .start-button{
   color: black;
-  padding: 5px 3px;
+  padding: 6px 30px;
   background-color: #3788d8;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+section.keyboard >button.correct{
+  background-color: #10A95B;
+}
+section.keyboard >button.wrong{
+  background-color: #EC5D49;
 }

@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export const AssemblyEndgame = () => {
+  const [currentWord, setCurrentWord] = useState("react");
+
   const languages = [
     {
       name: "HTML",
@@ -54,6 +58,12 @@ export const AssemblyEndgame = () => {
     );
   });
 
+  const letterElement = currentWord.split("").map((letter, index) => (
+    <span key={index} className="letter">
+      {letter.toUpperCase()}
+    </span>
+  ));
+
   return (
     <main>
       <header>
@@ -68,6 +78,7 @@ export const AssemblyEndgame = () => {
         <p>Good Job🎉</p>
       </section>
       <section className="lang-chips">{langElement}</section>
+      <section className="word">{letterElement}</section>
     </main>
   );
 };

@@ -108,6 +108,7 @@ export const AssemblyEndgame = () => {
     return (
       <button
         className={isCorrect ? "correct" : isWrong ? "wrong" : ""}
+        disabled={isGameOver}
         onClick={() => addGuessedLetter(letter)}
         key={letter}
       >

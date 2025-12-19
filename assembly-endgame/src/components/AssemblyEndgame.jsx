@@ -1,8 +1,28 @@
 import { useState } from "react";
 
 export const AssemblyEndgame = () => {
-  const [currentWord, setCurrentWord] = useState("react");
+
+  const words = [
+    "chair",
+    "hat",
+    "umbrella",
+    "spoon",
+    "car",
+    "memes",
+    "guitar",
+    "money",
+    "horses",
+    "honey",
+  ];
+
+    function getRandomWord() {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    return words[randomIndex];
+  }
+
+  const [currentWord, setCurrentWord] = useState(() => getRandomWord());
   const [guessedLetter, setGuessedLetter] = useState([]);
+
 
   const languages = [
     {

@@ -3,6 +3,8 @@ import { useState } from "react";
 export const AssemblyEndgame = () => {
   const [currentWord, setCurrentWord] = useState("react");
 
+  const alphabets = "abcdefghijklmnopqrstuvwxyz";
+
   const languages = [
     {
       name: "HTML",
@@ -64,6 +66,10 @@ export const AssemblyEndgame = () => {
     </span>
   ));
 
+  const keyboardElement = alphabets
+    .split("")
+    .map((letter) => <button key={letter}>{letter.toUpperCase()}</button>);
+
   return (
     <main>
       <header>
@@ -79,6 +85,7 @@ export const AssemblyEndgame = () => {
       </section>
       <section className="lang-chips">{langElement}</section>
       <section className="word">{letterElement}</section>
+      <section className="keyboard">{keyboardElement}</section>
     </main>
   );
 };

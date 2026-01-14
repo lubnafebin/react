@@ -1,0 +1,11 @@
+.main{
+    padding: "40px";
+    font-family: sans-serif;
+}
+.card{
+    padding: "20px";
+    border-radius: "12px";
+    background: "#1e1e1e";
+    color: "white";
+    width: "250px";
+}

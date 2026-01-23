@@ -1,68 +1,129 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Theme applied on body */
+body.dark {
+  background: #000; /* full black background */
+  color: #fff;      /* text white */
+}
+
+body.light {
+  background: #f4f4f4; /* full white background */
+  color: #111;         /* text black */
+}
+
+.app {
+  max-width: 420px;
+  margin: auto;
+  padding: 16px;
+}
+
+/* Header */
+.header {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 4px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+.title {
+  font-size: 18px;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Icons */
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Toggle Switch */
+.toggle {
+  width: 50px;
+  height: 26px;
+  border-radius: 20px;
+  background: #555;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle.light {
+  background: #eee;
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+
+.toggle.dark .toggle-thumb {
+  transform: translateX(0);
+}
+
+.toggle.light .toggle-thumb {
+  transform: translateX(24px);
+}
+
+/* Stats Card */
+.stats-card {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  transition: background 0.3s, color 0.3s;
+}
+
+.stats-card.dark {
+  background: #111;
+  color: #fff;
+}
+
+.stats-card.light {
+  background: #fff;
+  color: #111;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.divider {
+  height: 1px;
+  background: #222;
+  margin: 16px 0;
+}
+
+.hint {
+  font-size: 12px;
+  color: #777;
 }
